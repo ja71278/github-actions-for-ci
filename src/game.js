@@ -28,7 +28,7 @@ export default class Game {
       if (row[0] === null) { continue }
       win = win || (row[0] === row[1] && row[0] === row[2])
     }
-
+ 
     return win
   }
 
