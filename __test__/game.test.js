@@ -11,7 +11,6 @@ describe('App', () => {
   })
 })
 
-
 describe('Game', () => {
   let game, p1, p2
   beforeEach(() => {
@@ -20,19 +19,19 @@ describe('Game', () => {
     game = new Game(p1, p2)
   })
 
-  describe('Game', () => {
-    it('Initializes with two players', async () => {
-      expect(game.p1).toBe('Salem')
-      expect(game.p2).toBe('Nate')
-    })
+describe('Game', () => {
+  it('Initializes with two players', async () => {
+    expect(game.p1).toBe('Salem')
+    expect(game.p2).toBe('Nate')
+  })
 
-    it('Initializes with an empty board', async () => {
-      for (let r = 0; r < game.board.length; r++) {
-        for (let c = 0; c < game.board[r].lenght; c++) {
-          expect(game.board[r][c]).toBeUndefined()
-        }
-      }
-    })
+  it('Initializes with an empty board', async () => {
+     for (let r = 0; r < game.board.length; r++) {
+       for (let c = 0; c < game.board[r].lenght; c++) {
+         expect(game.board[r][c]).toBeUndefined()
+       }
+     }
+   })
 
     it('Starts the game with a random player', async () => {
       Math.random = () => 0.4
@@ -55,29 +54,28 @@ describe('Game', () => {
     })
   })
 
-  describe('nextPlayer', () => {
-    it('Sets the current player to be whoever it is not', async () => {
-      Math.random = () => 0.4
-      const game = new Game(p1, p2)
-      expect(game.player).toBe('Salem')
-      game.nextPlayer()
-      expect(game.player).toBe('Nate')
-    })
+describe('nextPlayer', () => {
+  it('Sets the current player to be whoever it is not', async () => {
+    Math.random = () => 0.4
+    const game = new Game(p1, p2)
+    expect(game.player).toBe('Salem')
+    game.nextPlayer()
+    expect(game.player).toBe('Nate')
   })
+})
 
-  describe('hasWinner', () => {
-    it('Wins if any row is filled', async () => {
-      for (let r = 0; r < game.board.length; r++) {
-        for (let c = 0; c < game.board[r].length; c++) {
-          game.board[r][c] = 'X'
-        }
-        expect(game.hasWinner()).toBe(true)
-
-        for (let c = 0; c < game.board[r].length; c++) {
-          game.board[r][c] = null
-        }
+describe('hasWinner', () => {
+  it('Wins if any row is filled', async () => {
+    for (let r = 0; r < game.board.length; r++) {
+      for (let c = 0; c < game.board[r].length; c++) {
+        game.board[r][c] = 'X'
       }
-    })
+      expect(game.hasWinner()).toBe(true)
+       for (let c = 0; c < game.board[r].length; c++) {
+        game.board[r][c] = null
+      }
+    }
+  })
 
     it('Wins if any column is filled', async () => {
       for (let r = 0; r < game.board.length; r++) {
